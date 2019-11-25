@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form</title>
+	<link rel="stylesheet" href="style.css">
+	<script>
+	<?php
+if($_POST['submit'] == "Submit")
+{
+   $varFirstName = $_POST['firstName'];
+   $varLastName = $_POST['lastName'];
+   $varGender = $_POST['gender'];
+   $varEmail = $_POST['email'];
+   $varPhone = $_POST['phone'];
+   $varCarType = $_POST['carType'];
+   $varNumber = $_POST['numberCar'];
+   $varText = $_POST['text'];
+   $errorMessage = "";
+}
+if($errorMessage != "")
+{
+  echo("<p>There was an error:</p>\n");
+  echo("<ul>" . $errorMessage . "</ul>\n");
+}
+else
+{
+  $fs = fopen("mydata.csv","a");
+  fwrite($fs,$varFirName . ", " . $varLastName . ", " . $varGender . ", " . $varEmail . ", " . $varPhone . "\n");
+  fclose($fs);
+  header("Location: thankyou.html");
+  exit;
+}
+
+?>
+</script>
+</head>
+<body>
+
+        <form action="/action_page.php" method="post">
+			<fieldset>
+			  <legend id="ss">Personal information:</legend>
+			  
+                First name:<br>
+					<input type="text" name="firstName" placeholder="First name" autofocus><br>
+                Last name:<br>
+					<input type="text" name="lastName"placeholder="Last name" required><br>
+				Gender:<br>
+					<input type="radio" name="gender" value="male" checked> Male<br>
+					<input type="radio" name="gender" value="female"> Female<br>
+					<input type="radio" name="gender" value="other"> Other<br>
+				Email:<br>
+					<input type="email" name="email" placeholder="email" required><br>
+				Phone No.<br>
+					<input type="tel" name="phone" placeholder="phone number" pattern="[0-9]{10}"required>
+					<br>
+					
+			</fieldset>
+			<fieldset>
+			  <legend id="ss">Cars information:</legend>
+				Car type:<br>
+				<input type="radio" name="carType">Micro</input><br>
+				<input type="radio" name="carType">Mini</input><br>
+				<input type="radio" name="carType">Sedan</input><br>
+				<input type="radio" name="carType">Suv</input><br>
+				Enter number of cars.
+				<input type="number" name="numberCar" min="1" max="3"><br>
+				<textarea name="message" name="text" style="width:250px; height:150px;">
+				Suggestion if any...
+				</textarea>
+				<br>
+			</fieldset>
+				<input type="submit" name="submit" value="Submit"> <input type="reset"><br>
+					<br><br>  
+              </form>
+              
+    
+</body>
+</html> 

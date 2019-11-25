@@ -1,0 +1,18 @@
+body {
+  background-color: gray;
+}
+form{
+	color:white;
+	font-family:verdana;
+	font-size: 100%;
+	margin: 50px;
+}
+#ss{
+	color:black;
+	font-size: 100%;
+}
+h1{
+	color:red;
+	font-size: 300%;
+	margin:100px;
+}
